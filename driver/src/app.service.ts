@@ -3,6 +3,10 @@ import * as os from 'os';
 @Injectable()
 export class AppService {
   getHello(): string {
-    return `Hello World! main server - host: ${os.hostname}`;
+    return `Hello World! driver server - host: ${os.hostname}`;
+  }
+  
+  getDriverServer(): string {
+    return `Hello World! driver server - host: ${os.hostname}`;
   }
 }

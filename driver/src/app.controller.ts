@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -11,7 +11,17 @@ export class AppController {
   }
 
   @Get('driver')
-  getCheck(): string {
-    return 'this is driver api'
+  getDriverServer(): string {
+    return this.appService.getDriverServer()
+  }
+
+  @Get('another')
+  getAnother(): string {
+    return 'is another api check'
+  }
+
+  @Post('driver')
+  getCheck(@Body() data): string {
+    return `driver server post check: return ${data.data}`
   }
 }

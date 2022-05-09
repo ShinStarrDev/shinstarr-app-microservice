@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -13,5 +13,10 @@ export class AppController {
   @Get()
   getCheck(): string {
     return 'this is main server'
+  }
+
+  @Post('user')
+  postCheck(@Body() data): string {
+    return `main server post check: return ${data.data}`
   }
 }

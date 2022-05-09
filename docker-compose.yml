@@ -1,0 +1,36 @@
+version: "3.5"
+services: 
+  nginx:
+    restart: always
+    hostname: nginx
+    build: 
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - 80:80
+    networks:
+      - network-test
+    depends_on:
+      - main
+    mem_limit: 128m
+  main:
+    container_name: main
+    hostname: main
+    build: ./main
+    ports:
+      - 55011:3000
+    networks:
+      - network-test
+    mem_limit: 128m
+  driver:
+    container_name: driver
+    hostname: driver
+    build: ./driver
+    ports:
+      - 55010:3000
+    networks:
+      - network-test
+    mem_limit: 128m  
+networks: 
+  network-test:
+    external: true
