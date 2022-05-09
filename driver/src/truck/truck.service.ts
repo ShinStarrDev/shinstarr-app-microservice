@@ -9,7 +9,7 @@ export class TruckService {
   constructor(private httpService: HttpService) {}
 
   findAll(): Observable<AxiosResponse> {
-    const data = this.httpService.get('https://api.shinstarr.com', {
+    const data = this.httpService.get('http://nginx:80', {
       headers: {
         'Accept': 'application/json'
       }

@@ -13,6 +13,19 @@ services:
     depends_on:
       - main
     mem_limit: 128m
+  nginx2:
+    restart: always
+    hostname: nginx2
+    build: 
+      dockerfile: Dockerfile
+      context: ./nginx2
+    ports:
+      - 81:81
+    networks:
+      - network-test
+    depends_on:
+      - driver
+    mem_limit: 128m
   main:
     container_name: main
     hostname: main
